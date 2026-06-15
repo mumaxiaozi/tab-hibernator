@@ -41,3 +41,7 @@
 - `chrome.storage.local` 存储标签访问时间戳
 - `chrome.storage.sync` 同步用户设置和白名单
 - 纯 JavaScript，零依赖，零构建步骤
+
+## License
+
+[MIT](LICENSE)
