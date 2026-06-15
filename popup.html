@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Hibernator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <header class="header">
+      <h1>🌙 Tab Hibernator</h1>
+      <span class="subtitle">标签页休眠助手</span>
+    </header>
+
+    <!-- 统计面板 -->
+    <section class="stats-panel">
+      <div class="stat-card">
+        <div class="stat-value" id="total-tabs">0</div>
+        <div class="stat-label">总标签</div>
+      </div>
+      <div class="stat-card stat-active">
+        <div class="stat-value" id="active-tabs">0</div>
+        <div class="stat-label">活跃</div>
+      </div>
+      <div class="stat-card stat-discarded">
+        <div class="stat-value" id="discarded-tabs">0</div>
+        <div class="stat-label">已休眠</div>
+      </div>
+      <div class="stat-card stat-memory">
+        <div class="stat-value" id="total-memory">--</div>
+        <div class="stat-label">可用内存</div>
+      </div>
+    </section>
+
+    <!-- 操作栏 -->
+    <section class="actions">
+      <button id="btn-discard-all" class="btn btn-primary">
+        ⏸ 一键休眠全部
+      </button>
+      <button id="btn-reload-all" class="btn btn-secondary" title="唤醒所有已休眠的标签页">
+        ▶ 唤醒全部
+      </button>
+    </section>
+
+    <!-- 设置区 -->
+    <section class="settings">
+      <div class="setting-row">
+        <label for="threshold">不活跃阈值：</label>
+        <select id="threshold">
+          <option value="1">1 分钟</option>
+          <option value="3">3 分钟</option>
+          <option value="5">5 分钟</option>
+          <option value="10">10 分钟</option>
+          <option value="15">15 分钟</option>
+          <option value="30">30 分钟</option>
+          <option value="60">1 小时</option>
+          <option value="120">2 小时</option>
+          <option value="240">4 小时</option>
+          <option value="480">8 小时</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Tab 列表 -->
+    <section class="tab-section">
+      <div class="section-header">
+        <h2>标签页列表</h2>
+        <span class="tab-count" id="tab-count-label">0 个</span>
+      </div>
+      <div class="tab-list" id="tab-list">
+        <!-- 动态填充 -->
+        <div class="loading">加载中...</div>
+      </div>
+    </section>
+
+    <!-- 白名单区 -->
+    <section class="whitelist-section">
+      <div class="section-header">
+        <h2>白名单（永不休眠）</h2>
+      </div>
+      <div class="whitelist-input-row">
+        <input type="text" id="whitelist-input" placeholder="输入域名，如 github.com">
+        <button id="btn-add-whitelist" class="btn btn-small">+ 添加</button>
+      </div>
+      <div class="whitelist-tags" id="whitelist-tags">
+        <!-- 动态填充 -->
+      </div>
+    </section>
+
+    <!-- Toast 通知 -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
